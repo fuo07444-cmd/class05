@@ -43,18 +43,22 @@ const chimney = new THREE.Mesh(chimneyGeo, chimneyMat);
 chimney.position.set(-1.5, 2.2, 0);
 trainGroup.add(chimney);
 
-// 車輪（左右）角度修正
-const wheelGeo = new THREE.CylinderGeometry(1, 1, 0.3, 32);
+// 車輪（左右）角度修正＋位置調整
+// ★ 車輪の大きさを変えたいなら 0.6 → 好きな数値に変更
+const wheelGeo = new THREE.CylinderGeometry(0.9, 0.9, 0.3, 32);
 const wheelMat = new THREE.MeshPhongMaterial({ color: 0xff0000 });
 
+// 左車輪
 const wheelL = new THREE.Mesh(wheelGeo, wheelMat);
 wheelL.rotation.x = Math.PI / 2;
-wheelL.position.set(1.5, 0.5, -1.1);
+// ★ 青い箱の中心に寄せるため X を 1.5 → 1.0 に変更
+wheelL.position.set(1.0, 0.5, -1.1);
 trainGroup.add(wheelL);
 
+// 右車輪
 const wheelR = new THREE.Mesh(wheelGeo, wheelMat);
 wheelR.rotation.x = Math.PI / 2;
-wheelR.position.set(1.5, 0.5, 1.1);
+wheelR.position.set(1.0, 0.5, 1.1);
 trainGroup.add(wheelR);
 
 scene.add(trainGroup);
