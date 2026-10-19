@@ -1,4 +1,4 @@
-// 車輪の角度と運転席の高さを修正したToyTrain
+// 汽車モデル（車輪位置を青い箱の中央寄りに調整）
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 
@@ -29,7 +29,7 @@ body.rotation.z = Math.PI / 2;
 body.position.set(0, 1, 0);
 trainGroup.add(body);
 
-// 運転席（Box）高さを伸ばす
+// 運転席（Box）
 const cabinGeo = new THREE.BoxGeometry(2, 3, 2);
 const cabinMat = new THREE.MeshPhongMaterial({ color: 0x0000ff });
 const cabin = new THREE.Mesh(cabinGeo, cabinMat);
@@ -43,22 +43,22 @@ const chimney = new THREE.Mesh(chimneyGeo, chimneyMat);
 chimney.position.set(-1.5, 2.2, 0);
 trainGroup.add(chimney);
 
-// 車輪（左右）角度修正＋位置調整
-// ★ 車輪の大きさを変えたいなら 0.6 → 好きな数値に変更
+// 車輪（左右）位置調整：青い箱の中央寄り
 const wheelGeo = new THREE.CylinderGeometry(0.9, 0.9, 0.3, 32);
 const wheelMat = new THREE.MeshPhongMaterial({ color: 0xff0000 });
 
 // 左車輪
 const wheelL = new THREE.Mesh(wheelGeo, wheelMat);
 wheelL.rotation.x = Math.PI / 2;
-// ★ 青い箱の中心に寄せるため X を 1.5 → 1.0 に変更
-wheelL.position.set(1.0, 0.5, -1.1);
+// X を 2.0 にして青い箱の中央寄り
+// Y を 1.0 にして高さを合わせる
+wheelL.position.set(2.0, 1.0, -1.1);
 trainGroup.add(wheelL);
 
 // 右車輪
 const wheelR = new THREE.Mesh(wheelGeo, wheelMat);
 wheelR.rotation.x = Math.PI / 2;
-wheelR.position.set(1.0, 0.5, 1.1);
+wheelR.position.set(2.0, 1.0, 1.1);
 trainGroup.add(wheelR);
 
 scene.add(trainGroup);
