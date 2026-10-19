@@ -44,7 +44,7 @@ chimney.position.set(-1.5, 2.2, 0);
 trainGroup.add(chimney);
 
 // 車輪（左右）角度修正
-const wheelGeo = new THREE.CylinderGeometry(0.6, 0.6, 0.3, 32);
+const wheelGeo = new THREE.CylinderGeometry(1, 1, 0.3, 32);
 const wheelMat = new THREE.MeshPhongMaterial({ color: 0xff0000 });
 
 const wheelL = new THREE.Mesh(wheelGeo, wheelMat);
